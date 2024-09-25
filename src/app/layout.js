@@ -1,6 +1,9 @@
 import localFont from "next/font/local";
 import "./globals.css";
-
+import Navbar from "../components/Navbar";
+import '@mantine/core/styles.css';
+import { FileContextProvider } from "../../context/fileContext";
+import { ColorSchemeScript, MantineProvider } from '@mantine/core';
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -21,7 +24,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+        <FileContextProvider>
+        <MantineProvider theme={{ colorScheme: 'dark' }} withGlobalStyles withNormalizeCSS>
+<Navbar/>
+  {children}
+</MantineProvider>
+</FileContextProvider>
       </body>
     </html>
   );

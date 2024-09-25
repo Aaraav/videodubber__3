@@ -1,42 +1,210 @@
 :root {
-  --background: #ffffff;
+  --background: #17171E;
   --foreground: #171717;
+}
+
+#navbar{
+  background-color: #17171E;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
-    --foreground: #ededed;
+    --foreground: #17171E;
   }
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
 
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
+}
+
+.upload-audio {
+  width: 100%;
+  margin-top: 5vh;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.upload-audio i.audio-icon {
+  font-size: 5em;
+}
+
+/* the container where wavesurfer adds the audio waveform */
+.waveform-container {
+  margin: 0 auto;
+  max-width: 80vw;
+  margin-bottom: '30vh';
+}
+
+/* style for the navbar */
+
+/* all icons */
+i.material-icons {
+  font-size: 1.5em;
+  color: "white";
+  position: fixed;
+  margin-left: 30%;
+  margin-top: 30%;
+
+}
+
+h1 {
+  color: #1D0B22
+}
+
+/* style for the upload button */
+button.upload-btn {
+  width: 10em;
+  font-size: 1em;
+  padding: 0.5em;
+  background: #5B266B;
+  border-radius: 999px;
+  color: white;
+  border-color: #5B266B;
+  cursor: pointer;
+}
+
+button.upload-btn:hover {
+  filter: brightness(1.1);
+}
+
+
+div.all-controls {
+  margin: 2em auto;
+  max-width: 60vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.all-controls .right-container,
+.all-controls .left-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 50%;
+}
+
+
+
+/* style for both sliders */
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 10%;
+  height: 10px;
+  cursor: pointer;
+  background: "#17171E";
+  border: 1px solid #17171E;
+  border-radius: 999px;
+  margin: 0;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  rotate: 90deg;
+  position: fixed;
+  margin-left: 79%;
+  margin-top: 10%;
+}
+
+.slider:hover {
+  filter: brightness(1.05);
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  background: #1D0B22;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.slider::-moz-range-thumb {
+  width: 15px;
+  height: 15px;
+  background: #1D0B22;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.volume-slide-container {
+  display: flex;
+  align-items: center;
+}
+
+/* smaller icon for zoom slider */
+
+
+
+.on {
+  display: none;
+  color: white;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 45%;
+  left: 35%;
+  font-size: 0.5em;
+}
+
+.off {
+  color: white;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 45%;
+  left: 65%;
+  font-size: 0.5em;
+
+}
+
+
+
+
+
+@media screen and (max-width: 430px) {
+  nav {
+    font-size: 1em;
+  }
+
+  .upload-audio i.audio-icon {
+    font-size: 4em;
+  }
+
+  /* all icons */
+  i.material-icons {
+    font-size: 1.5em;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  div.all-controls {
+    max-width: 90vw;
+    flex-flow: column nowrap;
+  }
+
+  .waveform-container {
+    max-width: 90vw;
+    margin-bottom: '30vh';
+    
+  }
+
+  .all-controls .right-container,
+  .all-controls .left-container {
+    justify-content: space-evenly;
+    width: 100%;
+    margin-top: 1em;
+  }
+
+  /* smaller icon for zoom slider */
+  i.zoom-icon {
+    font-size: 1em;
+  }
+
 }
