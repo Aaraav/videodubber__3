@@ -14,7 +14,6 @@ export default function Navbar() {
     'Splitter',
     'Pitcher',
     'Key BPM Finder',
-    'Cutter',
     'Joiner',
     'Recorder',
     'Karaoke'
@@ -25,17 +24,27 @@ export default function Navbar() {
     'https://cdn-icons-png.flaticon.com/512/4937/4937225.png', // Splitter
     'https://cdn-icons-png.flaticon.com/512/7468/7468155.png', // Pitcher
     'https://cdn-icons-png.flaticon.com/512/7468/7468155.png', // Key BPM Finder
-    'https://cdn-icons-png.flaticon.com/512/1166/1166921.png', // Cutter
     'https://cdn-icons-png.flaticon.com/512/7468/7468155.png', // Joiner
     'https://cdn-icons-png.flaticon.com/512/7468/7468155.png', // Recorder
     'https://cdn-icons-png.flaticon.com/512/7468/7468155.png'  // Karaoke
   ];
 
+  const handleCutterClick = (e) => {
+    // Prevent default link behavior
+    e.preventDefault();
+    if (!fileURL) {
+      alert("Please upload audio before accessing the Cutter.");
+    } else {
+      // Navigate to the Cutter page if audio is uploaded
+      window.location.href = '/cutter';
+    }
+  };
+
   return (
-    <div style={{alignItems:'center', justifyContent:'center'}}>
+    <div style={{ alignItems: 'center', justifyContent: 'center' }}>
       <button
         onClick={() => setIsNavbarVisible(!isNavbarVisible)}
-        style={{top:'7%', left:'2%', position:'absolute', zIndex:'9999'}} 
+        style={{ top: '7%', left: '2%', position: 'absolute', zIndex: '9999' }}
       >
         <Image 
           src={"https://cdn-icons-png.flaticon.com/512/4543/4543046.png"}
@@ -67,6 +76,31 @@ export default function Navbar() {
             scrollbarColor: '#665DC3 #17171E',
           }}
         >
+          {/* Place the Cutter link at the top */}
+          <li
+            onClick={handleCutterClick}
+            style={{
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: '20px 0',
+              textAlign: 'center',
+              color: 'white',
+              cursor: 'pointer',
+            }}
+          >
+            <Image
+              src={'https://cdn-icons-png.flaticon.com/512/1166/1166921.png'} // Cutter logo
+              width={30}
+              height={30}
+              style={{
+                objectFit: 'contain',
+                marginRight: '10px'
+              }}
+            />
+            Cutter
+          </li>
+
+          {/* Render other items */}
           {items.map((item, index) => (
             <li
               key={index}
@@ -93,33 +127,6 @@ export default function Navbar() {
               {item}
             </li>
           ))}
-
-          {/* Conditional link to /cutter if audio is uploaded */}
-          {fileURL && (
-            <Link href="/cutter">
-              <li
-                style={{
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  padding: '20px 0',
-                  textAlign: 'center',
-                  color: 'white', // Change color to indicate it's active
-                  cursor: 'pointer',
-                }}
-              >
-                <Image
-                  src={logos[4]} // Using the Cutter logo
-                  width={30}
-                  height={30}
-                  style={{
-                    objectFit: 'contain',
-                    marginRight: '10px'
-                  }}
-                />
-                Cutter
-              </li>
-            </Link>
-          )}
         </ul>
         <Button mt="sm" size="compact-xl" variant="transparent" color="gray">Support</Button>
         <Image
